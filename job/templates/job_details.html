@@ -1,0 +1,32 @@
+{% load static%}
+{%block body%}
+{%include 'user_navigation.html'%}
+<style>
+.container{
+    text-align:center
+}
+</style>
+<marquee  style="font-family:'Monotype Corsiva';font-size:25px; color:yellow;background-color:black; font-weight:bold; margin-top:1%">
+Job Details
+</marquee>
+<hr>
+<div class="container shadow-lg my-4">
+    <div class="row">
+        <div class="col-md-12">
+        <h2>{{job.job_role}}</h2>
+        <p>{{job.company.companyname}}<em><a href="{%url 'user_latestjob'%}">(View all jobs)</a></em></p>
+        <p><i class="fa fa-map-marker"></i> {{job.location}}</p>
+        <p><i class="fa fa-calendar"></i> {{job.creation_date}}</p>
+        <strong><i class="fa fa-money"></i> {{job.salary}} <i class="fa fa-inr"></i></strong>
+        <p> <b>Job Description : </b> {{job.description}}</p>
+        <p> <b>Experience : </b> {{job.experience}} years</p>
+        <p> <b>Skills Required : </b> {{job.required_skills}}</p>
+        <p> <b>Start Date : </b> {{job.start_date}}</p>
+        <p> <b>End Date : </b> {{job.end_date}}</p>
+        <div>
+        <a type="submit" href="{%url 'applyforjob' job.id%}"class="btn btn-danger mb-2">Apply for this job</a>
+        </div>
+        </div>
+    </div>
+</div>
+{%endblock body%}

@@ -1,0 +1,15 @@
+{% load static%}
+{%block body%}
+{%include 'admin_navigation.html'%}
+<marquee  style="font-family:'Monotype Corsiva';font-size:25px; color:yellow;background-color:black; font-weight:bold; margin-top:1%">
+Admin Home
+</marquee>
+<div class="col-my-5">
+    <h4 class="text-center"><i class="fa fa-users my-3"></i>Total number of Companies</h4>
+    <p class="text-center"><b>{{ccount}}</b></p>
+</div>
+<div class="col-my=5t-">
+    <h4 class="text-center"><i class="fa fa-users my-3"></i>Total number of Job-Seekers</h4>
+    <p class="text-center"><b>{{jcount}}</b></p>
+</div>
+{%endblock body%}

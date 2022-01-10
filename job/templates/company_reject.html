@@ -1,0 +1,32 @@
+{% load static%}
+{%block body%}
+{%include 'admin_navigation.html'%}
+<marquee  style="font-family:'Monotype Corsiva';font-size:25px; color:yellow;background-color:black; font-weight:bold; margin-top:1%">
+View Rejected Companies
+</marquee>
+<hr>
+<table class="table table-hover container">
+    <thead>
+        <tr style="background-color:yellow">
+            <th>S.No.</th>
+            <th>Company Name</th>
+            <th>Email ID</th>
+            <th>Contact Number</th>
+            <th>Website</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody style="background-color:#bdf1e582">
+        {%for i in data%}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.companyname}}</td>
+            <td>{{i.user.username}}</td>
+            <td>{{i.mobile}}</td>
+            <td>{{i.website}}</td>
+            <td>{{i.status}}</td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+{%endblock body%}

@@ -1,0 +1,39 @@
+{% load static%}
+{%block body%}
+{%include 'navigation.html'%}
+<style>
+tr{text-align:center}
+</style>
+<marquee  style="font-family:'Monotype Corsiva';font-size:25px; color:yellow;background-color:black; font-weight:bold; margin-top:1%">
+Latest Jobs
+</marquee>
+<hr>
+<table class="table table-hover container">
+    <thead>
+        <tr style="background-color:yellow">
+            <th>S.No.</th>
+            <th>Company Name</th>
+            <th>Department</th>
+            <th>Job Role</th>
+            <th>Location</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody style="background-color:#bdf1e582">
+        {%for i in job%}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.company.companyname}}</td>
+            <td>{{i.department}}</td>
+            <td>{{i.job_role}}</td>
+            <td>{{i.location}}</td>
+            <td>{{i.start_date}}</td>
+            <td>{{i.end_date}}</td>
+            <td><a href="{% url 'user_login'%}" class="btn btn-success">Login to apply</a>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+{%endblock body%}

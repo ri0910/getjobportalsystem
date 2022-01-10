@@ -1,0 +1,37 @@
+{% load static%}
+{%block body%}
+{%include 'navigation.html'%}
+<marquee  style="font-family:'Monotype Corsiva';font-size:25px; color:yellow;background-color:black; font-weight:bold; margin-top:1%">
+Company Login
+</marquee>
+<hr>
+<form class="container mt-5" method="post">
+    {% csrf_token %}
+    <label><b>EmailID</b></label>
+    <input type="email" class="form-control" name="uname" placeholder="Enter EmailID">
+    <label><b>Password</b></label>
+    <input type="password" class="form-control" name="pwd" placeholder="Enter User Password">
+    <input type="submit" value="Login" class="btn btn-primary" style="margin-top:2%">
+    <a  href="{%url 'company_signup'%}" class="btn btn-primary" style="margin-top:2%">Create an Account</a>
+</form>
+{% include 'footer.html'%}
+{%endblock body%}
+{%if error == "no"%}
+<script>
+    alert("Login Successfull");
+    window.location=('{% url 'company_home'%}')
+</script>
+{%endif%}
+{%if error == "yes"%}
+<script>
+    alert("Invalid login credentials");
+    window.location=('{% url 'company_login'%}')
+</script>
+{%endif%}
+{%if error == "not"%}
+<script>
+    alert("Your login status is pending.");
+    window.location=('{% url 'company_login'%}')
+</script>
+{%endif%}
+

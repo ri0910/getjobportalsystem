@@ -1,0 +1,67 @@
+{% load static%}
+{%block body%}
+{%include 'user_navigation.html'%}
+<marquee  style="font-family:'Monotype Corsiva';font-size:25px; color:yellow;background-color:black; font-weight:bold; margin-top:1%">
+Job-Seeker Profile
+</marquee>
+<hr>
+<style>
+.container{
+    text-align:center
+}
+.form-control{
+    text-align:center
+}
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+<form class="mt-5" method="POST">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label><b>First Name</b></label>
+            <input type="text" class="form-control" name="fname" value="{{nuser.user.first_name}}" >
+        </div>
+        <div class="form-group col-md-6">
+            <label><b>Last Name</b></label>
+            <input type="text" class="form-control" name="lname" value="{{nuser.user.last_name}}" >
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label><b>Contact Number</b></label>
+            <input type="text" class="form-control" name="mobile" value="{{nuser.mobile}}">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label><b>Email ID</b></label>
+            <input type="email" class="form-control" name="email" value="{{nuser.user.username}}" >
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label><b>Gender</b></label>
+            <input type="text" class="form-control" name="gender" value="{{nuser.gender}}">
+        </div>
+    </div>
+    <input type="submit" value="Edit" class="btn btn-primary my-3" style="width:200px">
+</form>
+</div>
+</div>
+</div>
+{% include 'footer.html'%}
+{%endblock body%}
+{%if error == "no"%}
+<script>
+    alert("Changes done Successfully");
+    window.location=('{% url 'user_home'%}')
+</script>
+{%endif%}
+{%if error == "yes"%}
+<script>
+    alert("Something went wrong,try again.");
+    window.location=('{% url 'user_home'%}')
+</script>
+{%endif%}
